@@ -36,12 +36,26 @@ sys.stdout.flush()
 
 print('\n')
 
+py_avg = sum(times_py)/N
+py_max = max(times_py)
+py_min = min(times_py)
+rust_avg = sum(times_rust)/N
+rust_max = max(times_rust)
+rust_min = min(times_rust)
+
+
 print('=== PYTHON ===')
-print(f'avg: {sum(times_py)/N}')
-print(f'max: {max(times_py)}')
-print(f'min: {min(times_py)}')
+print(f'avg: {py_avg}')
+print(f'max: {py_max}')
+print(f'min: {py_min}')
 print('')
 print('==== RUST ====')
-print(f'avg: {sum(times_rust)/N}')
-print(f'max: {max(times_rust)}')
-print(f'min: {min(times_rust)}')
+print(f'avg: {rust_avg}')
+print(f'max: {rust_max}')
+print(f'min: {rust_min}')
+print('')
+print('==============')
+print('Rust is better than Python by:')
+print(f'  {py_avg/rust_avg*100 if py_avg > rust_avg else -rust_avg/py_avg*100}% (avg)')
+print(f'  {py_max/rust_max*100 if py_max > rust_max else -rust_max/py_max*100}% (max)')
+print(f'  {py_min/rust_min*100 if py_min > rust_min else -rust_min/py_min*100}% (min)')
